@@ -359,3 +359,42 @@ body {
 .input-cell.left-cell-selected {
   border-left: none;
 }
+
+.sum-range {
+  background-color: #d3e3fd;
+}
+
+.formula-dropdown {
+  position: absolute;
+  top: 2px;
+  left: 40px;
+  border: 2px solid black;
+  /* height: 30px; */
+  /* width: 150px; */
+}
+
+.enabled-button {
+  margin: 20px;
+  padding: 5px;
+  border: 1px solid green;
+  background-color: #ffffff;
+}
+
+.disabled-button {
+  margin: 20px;
+  padding: 5px;
+  border: 1px solid lightgrey;
+  background-color: #ffffff7f;
+}
+
+.result-container {
+  width: 300px;
+  height: 4vh;
+  border: 2px solid lightgrey;
+  display: flex;
+  /* justify-content: center; */
+  padding: 10px;
+  margin: 20px;
+  align-items: center;
+  background-color: #ffffff7f;
+}

@@ -107,11 +107,85 @@ $(document).ready(function () {
           $(`#row-${rowId}-col-${colId + 1}`).addClass("left-cell-selected");
         }
       }
+
+      $(".operations-button").removeClass("disabled-button");
+      $(".operations-button").addClass("enabled-button");
+      $(".calculate-sum.enabled-button").click(function () {
+        let sum = 0;
+        $(".input-cell.selected").each(function () {
+          let cellValue = parseFloat($(this).text());
+          if (!isNaN(cellValue)) {
+            sum += cellValue;
+          }
+        });
+        console.log("Sum of selected cells:", sum);
+      });
+
+      $(".calculate-average.enabled-button").click(function () {
+        let sum = 0;
+        let count = 0;
+        $(".input-cell.selected").each(function () {
+          let cellValue = parseFloat($(this).text());
+          if (!isNaN(cellValue)) {
+            sum += cellValue;
+            count++;
+          }
+        });
+        let average = count > 0 ? sum / count : 0;
+        console.log("Average of selected cells:", average);
+      });
+
+      $(".calculate-count.enabled-button").click(function () {
+        let count = 0;
+        $(".input-cell.selected").each(function () {
+          let cellValue = $(this).text();
+          if (cellValue != "") {
+            count++;
+          }
+        });
+        console.log("Count of selected cells:", count);
+      });
+
+      $(".calculate-min.enabled-button").click(function () {
+        let min = Number.MAX_VALUE;
+        $(".input-cell.selected").each(function () {
+          let cellValue = parseFloat($(this).text());
+          if (!isNaN(cellValue)) {
+            min = Math.min(min, cellValue);
+          }
+        });
+        console.log("Minimum of selected cells:", min);
+      });
+
+      $(".calculate-max.enabled-button").click(function () {
+        let max = Number.MIN_VALUE;
+        $(".input-cell.selected").each(function () {
+          let cellValue = parseFloat($(this).text());
+          if (!isNaN(cellValue)) {
+            max = Math.max(max, cellValue);
+          }
+        });
+        console.log("Maximum of selected cells:", max);
+      });
     } else {
-      $(".input-cell.selected").removeClass("selected");
+      $(".input-cell.selected").removeClass(
+        "selected top-cell-selected bottom-cell-selected left-cell-selected right-cell-selected"
+      );
+      $(".operations-button").addClass("disabled-button");
+      $(".operations-button").removeClass("enabled-button");
     }
     $(this).addClass("selected");
     changeHeader(this);
+
+    //   // Calculate and log the sum of selected cells
+    //   let sum = 0;
+    //   $(".input-cell.selected").each(function () {
+    //     let cellValue = parseFloat($(this).text());
+    //     if (!isNaN(cellValue)) {
+    //       sum += cellValue;
+    //     }
+    //   });
+    //   console.log("Sum of selected cells:", sum);
   });
 
   function changeHeader(ele) {
@@ -474,17 +548,3 @@ $(".icon-paste").click(function () {
 
   loadSheet();
 });
-
-let sumOfSelected = 0;
-
-function sum() {
-  sumOfSelected = 0;
-  $(".input-cell.selected").each(function () {
-    if (!isNaN($(this).text())) {
-      sumOfSelected += parseInt($(this).text());
-    }
-  });
-  console.log(sumOfSelected);
-}
-
-sum();
