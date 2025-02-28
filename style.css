@@ -209,8 +209,18 @@ body {
   display: flex;
 }
 
+.sheet-tab:hover {
+  cursor: pointer;
+  background-color: lightgrey;
+}
+
 .sheet-tab.selected {
   border-bottom: 4px solid green;
+}
+
+.sheet-tab.selected:hover {
+  cursor: default;
+  background-color: white;
 }
 
 .sheet-tab {

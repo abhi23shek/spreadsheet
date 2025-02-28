@@ -330,4 +330,23 @@ $(".icon-add").click(function () {
   $(".sheet-tab-container").append(
     `<div class="sheet-tab selected">${sheetName}</div>`
   );
+  $(".sheet-tab.selected").click(function () {
+    if (!$(this).hasClass("selected")) {
+      selectSheet(this);
+    }
+  });
 });
+
+$(".sheet-tab").click(function () {
+  if (!$(this).hasClass("selected")) {
+    selectSheet(this);
+  }
+});
+
+function selectSheet(ele) {
+  $(".sheet-tab.selected").removeClass("selected");
+  $(this).addClass("selected");
+  emptySheet();
+  selectedSheet = $(ele).text();
+  loadSheet();
+}
