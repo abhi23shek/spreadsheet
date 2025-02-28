@@ -9,6 +9,77 @@ body {
 }
 .container {
   height: 100vh;
+  position: relative;
+}
+
+.sheet-options-modal {
+  position: absolute;
+  bottom: 4vh;
+  background-color: #ffffff;
+  height: 60px;
+  width: 60px;
+  left: 40px;
+  box-shadow: 0 0 3px 2px lightgray;
+}
+
+.sheet-rename,
+.sheet-delete {
+  height: 30px;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sheet-rename-modal {
+  position: absolute;
+  height: 180px;
+  width: 300px;
+  top: calc(50vh - 90px);
+  left: calc(50vw - 150px);
+  /* left: 200px; */
+  background-color: white;
+  text-align: center;
+  box-shadow: 0 0 3px 2px lightgray;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.modal-title {
+  font-size: 20px;
+}
+
+.sheet-rename:hover,
+.sheet-delete:hover {
+  cursor: pointer;
+  background-color: lightgrey;
+}
+
+.new-sheet-name {
+  height: 26px;
+  font-size: 18px;
+  outline-color: green;
+}
+
+.rename-button {
+  cursor: pointer;
+  color: green;
+  font-weight: bold;
+  padding: 5px;
+  border: 1px solid green;
+}
+
+.cancel-button {
+  cursor: pointer;
+  color: red;
+  font-weight: bold;
+  padding: 5px;
+  border: 1px solid red;
 }
 
 .title-bar {
