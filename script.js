@@ -118,6 +118,8 @@ $(document).ready(function () {
             sum += cellValue;
           }
         });
+        $(".result-container").addClass("result-enabled");
+        $(".result-container").text("Sum of selected cells: " + sum);
         console.log("Sum of selected cells:", sum);
       });
 
@@ -132,6 +134,8 @@ $(document).ready(function () {
           }
         });
         let average = count > 0 ? sum / count : 0;
+        $(".result-container").addClass("result-enabled");
+        $(".result-container").text("Average of selected cells: " + average);
         console.log("Average of selected cells:", average);
       });
 
@@ -143,6 +147,8 @@ $(document).ready(function () {
             count++;
           }
         });
+        $(".result-container").addClass("result-enabled");
+        $(".result-container").text("Count of selected cells: " + count);
         console.log("Count of selected cells:", count);
       });
 
@@ -154,6 +160,8 @@ $(document).ready(function () {
             min = Math.min(min, cellValue);
           }
         });
+        $(".result-container").addClass("result-enabled");
+        $(".result-container").text("Minimum of selected cells: " + min);
         console.log("Minimum of selected cells:", min);
       });
 
@@ -165,6 +173,8 @@ $(document).ready(function () {
             max = Math.max(max, cellValue);
           }
         });
+        $(".result-container").addClass("result-enabled");
+        $(".result-container").text("Maximum of selected cells: " + max);
         console.log("Maximum of selected cells:", max);
       });
     } else {
@@ -173,19 +183,11 @@ $(document).ready(function () {
       );
       $(".operations-button").addClass("disabled-button");
       $(".operations-button").removeClass("enabled-button");
+      $(".result-container").removeClass("result-enabled");
+      $(".result-container").text("OUTPUT");
     }
     $(this).addClass("selected");
     changeHeader(this);
-
-    //   // Calculate and log the sum of selected cells
-    //   let sum = 0;
-    //   $(".input-cell.selected").each(function () {
-    //     let cellValue = parseFloat($(this).text());
-    //     if (!isNaN(cellValue)) {
-    //       sum += cellValue;
-    //     }
-    //   });
-    //   console.log("Sum of selected cells:", sum);
   });
 
   function changeHeader(ele) {
@@ -222,7 +224,49 @@ $(document).ready(function () {
     $(".font-size-selector").val(cellInfo["font-size"]);
   }
 
+  $(".input-cell").click(function (e) {
+    $(".input-cell-option").remove();
+    $(".container").append(`<div class="input-cell-option">
+      <button class="text-option options-trim" title="Trim"><div class="material-symbols-outlined icon-trim" style="font-size: 16px;">content_cut</div></button>
+      <button class="text-option options-upper" title="Uppercase"><div class="material-symbols-outlined icon-upper" style="font-size: 16px;">uppercase</div></button>
+      <button class="text-option options-lower" title="Lowercase"><div class="material-symbols-outlined icon-lower" style="font-size: 16px;">lowercase</div></div></button>`);
+    $(".input-cell-option").css("left", e.pageX + "px");
+    $(".input-cell-option").css("top", e.pageY + 25 + "px");
+    // console.log(`Clicked cell at row: ${rowId}, column: ${colId}, x: ${x}, y: ${y}`);
+  });
+
+  $(document).on("click", ".icon-trim", function () {
+    console.log("Trim clicked");
+    $(".input-cell.selected").each(function () {
+      let text = $(this).text().trim();
+      updateCell("text", text);
+      emptySheet();
+      loadSheet();
+    });
+  });
+
+  $(document).on("click", ".icon-upper", function () {
+    console.log("Upper clicked");
+    $(".input-cell.selected").each(function () {
+      let text = $(this).text().toUpperCase();
+      updateCell("text", text);
+      emptySheet();
+      loadSheet();
+    });
+  });
+
+  $(document).on("click", ".icon-lower", function () {
+    console.log("Lower clicked");
+    $(".input-cell.selected").each(function () {
+      let text = $(this).text().toLowerCase();
+      updateCell("text", text);
+      emptySheet();
+      loadSheet();
+    });
+  });
+
   $(".input-cell").dblclick(function () {
+    $(".input-cell-option").remove();
     $(".input-cell.selected").removeClass("selected");
     $(this).addClass("selected");
     $(this).attr("contenteditable", "true");
@@ -547,4 +591,14 @@ $(".icon-paste").click(function () {
   }
 
   loadSheet();
+});
+
+// $(".input-cell").contextmenu(function (e) {
+//   e.preventDefault();
+//   console.log("right click");
+//   // e.stopPropagation();
+// });
+
+$(".container").click(function () {
+  $(".input-cell-options-modal").remove();
 });

@@ -206,6 +206,7 @@ body {
 }
 
 .data-container {
+  position: relative;
   height: 75vh;
   display: flex;
   flex-wrap: wrap;
@@ -397,4 +398,48 @@ body {
   margin: 20px;
   align-items: center;
   background-color: #ffffff7f;
+}
+.result-enabled {
+  border: 1px solid green;
+  background-color: #ffffff;
+}
+
+.input-cell-options-modal {
+  position: absolute;
+  top: 4vh;
+  background-color: #ffffff;
+  height: 60px;
+  width: 60px;
+  left: 40px;
+  box-shadow: 0 0 3px 2px lightgray;
+  z-index: 999;
+}
+
+.input-cell-option {
+  position: absolute;
+  border: 1px solid lightgrey;
+  /* padding: 5px; */
+  border: 1px solid rgb(26, 171, 187);
+  display: flex;
+}
+
+.text-option {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2px;
+  border: 1px solid lightgrey;
+  background-color: #ffffff;
+
+  /* background-color: rgb(26, 171, 187); */
+}
+
+.text-option:hover {
+  cursor: pointer;
+  background-color: lightgrey;
+}
+
+.icon-trim {
+  font-size: 5px;
 }
