@@ -254,7 +254,6 @@ $(document).ready(function () {
       loadSheet();
     });
   });
-
   $(document).on("click", ".icon-lower", function () {
     console.log("Lower clicked");
     $(".input-cell.selected").each(function () {
