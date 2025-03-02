@@ -54,19 +54,7 @@ To get started with MySheet, follow these steps:
 
 - [jQuery](https://jquery.com/): A fast, small, and feature-rich JavaScript library.
 
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
 ## Acknowledgements
 
 - Icons provided by [Google Material Icons](https://fonts.google.com/icons)
 - Fonts provided by [Google Fonts](https://fonts.google.com/)
-
----
-
-Feel free to customize this README file according to your project's specific details and requirements.
